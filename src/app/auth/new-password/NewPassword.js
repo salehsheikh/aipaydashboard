@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import UniformWave from '../../components/UniformWave';
 import { Eye, EyeOff } from 'lucide-react';
@@ -20,12 +20,12 @@ const NewPassword = () => {
     toggleShowConfirmPassword,
     setNewPassword,
     setConfirmPassword,
-    resetPassword,
     setResetToken
   } = useAuthStore();
-
+  const [isMounted, setIsMounted] = useState(false);
   // Extract token from URL and set in store
   useEffect(() => {
+    setIsMounted(true);
     const token = searchParams.get('token');
     if (token) {
       setResetToken(token);
@@ -34,9 +34,8 @@ const NewPassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await resetPassword(); // Token is already in store
   };
-
+  if (!isMounted) return null;
   return (
     <div className="relative flex justify-center items-center min-h-screen bg-[#F7F7F7]">
       <UniformWave />

@@ -1,9 +1,10 @@
+
 import { getCollection } from "../../../lib/dbConnect";
 
 export async function GET() {
   try {
     const usersCollection = await getCollection("users");
-    const users = await usersCollection.find().limit(5).toArray();
+    const users = await usersCollection.find({}).limit(5).toArray();
     
     return Response.json({ 
       success: true, 
