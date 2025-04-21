@@ -1,13 +1,11 @@
 "use client";
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import UniformWave from '../../components/UniformWave';
 import { Eye, EyeOff } from 'lucide-react';
 import Image from 'next/image';
 import { useAuthStore } from "../../stores/authStore";
 
-const NewPassword = () => {
-  const searchParams = useSearchParams();
+const NewPassword = ({ token }) => {
   const {
     showPassword,
     showConfirmPassword,
@@ -22,20 +20,23 @@ const NewPassword = () => {
     setConfirmPassword,
     setResetToken
   } = useAuthStore();
+
   const [isMounted, setIsMounted] = useState(false);
-  // Extract token from URL and set in store
+
   useEffect(() => {
     setIsMounted(true);
-    const token = searchParams.get('token');
     if (token) {
       setResetToken(token);
     }
-  }, [searchParams, setResetToken]);
+  }, [token, setResetToken]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Submit logic here...
   };
+
   if (!isMounted) return null;
+
   return (
     <div className="relative flex justify-center items-center min-h-screen bg-[#F7F7F7]">
       <UniformWave />
@@ -97,16 +98,8 @@ const NewPassword = () => {
             </div>
           </div>
 
-          {error && (
-            <div className="text-red-500 text-sm text-center">
-              {error}
-            </div>
-          )}
-          {successMessage && (
-            <div className="text-green-500 text-sm text-center">
-              {successMessage}
-            </div>
-          )}
+          {error && <div className="text-red-500 text-sm text-center">{error}</div>}
+          {successMessage && <div className="text-green-500 text-sm text-center">{successMessage}</div>}
 
           <button
             type="submit"
