@@ -10,7 +10,7 @@ export async function GET() {
       success: true, 
       users: users.map(user => ({
         ...user,
-        _id: user._id.toString() // Convert ObjectId to string
+        _id: user._id.toString() 
       }))
     });
   } catch (error) {

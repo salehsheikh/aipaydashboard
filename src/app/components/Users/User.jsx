@@ -28,7 +28,7 @@ const User = () => {
     },
   }));
   
-    return(
+    return (
     <div className='w-full mt-16'>
         <h1 className='ml-4 mb-3'>Active Users</h1>
         <DataTable headers={headers} rows={rows} />

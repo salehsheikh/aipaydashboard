@@ -9,7 +9,7 @@ const deadlineOptions = [
   '72 Hours',
 ];
 
-export default function ComplianceRequestModal({ isOpen, onClose, onSubmitSuccess }) {
+export default function ComplianceRequestModal({ isOpen, onClose,}) {
   const [showSuccess, setShowSuccess] = useState(false);
   const [selectedDeadline, setSelectedDeadline] = useState(deadlineOptions[0]);
   const [notes, setNotes] = useState('');

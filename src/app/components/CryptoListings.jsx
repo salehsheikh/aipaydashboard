@@ -20,8 +20,7 @@ export default function CryptoListings() {
     exchangeRate: '$48,500',
     blockChain: 'Bitcoin Network',
   },
-  actionText: 'Download',
-  buttonColor: 'blue',
+  
 }];
   const rows = cryptos.map(crypto=>({
       data: {

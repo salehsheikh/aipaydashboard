@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import UniformWave from '../UniformWave';
 import { useState } from 'react';
-import SuccessDialog  from './Successfull'
 import SuccessfullDialog from './Successfull';
 const RefundDialog = ({ onClose }) => {
   const [showSuccess, setShowSuccess] = useState(false);
